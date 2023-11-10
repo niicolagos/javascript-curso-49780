@@ -1,37 +1,22 @@
-const pantalla = document.querySelector(".pantalla");
-const botones = document.querySelectorAll(".btn");
+function calculateBudget() {
+    // Obtener los valores de ingresos y gastos
+    const ingreso = parseFloat(document.getElementById('ingreso').value);
+    const expensas = parseFloat(document.getElementById('expensas').value);
 
-botones.forEach(boton => {
-    boton.addEventListener("click", () => {
-        const botonApretado = boton.textContent;
+    // Calcular el presupuesto restante
+    let budget = ingreso - expensas;
 
-        if (boton.id === "c") {
-            pantalla.textContent = "0";
-            return;
-        }
+    // Determinar el mensaje del resultado
+    let resultMessage = '';
+    if (budget > 0) {
+        resultMessage = '¡Felicidades! Tienes un excedente de $' + budget.toFixed(2) + ' al mes.';
+    } else if (budget === 0) {
+        resultMessage = 'Estás equilibrado. No tienes excedente ni deuda.';
+    } else {
+        resultMessage = '¡Cuidado! Tienes un déficit de $' + Math.abs(budget).toFixed(2) + ' al mes.';
+    }
 
-        if (boton.id === "clear") {
-            if (pantalla.textContent.length === 1 || pantalla.textContent === "Error"){
-                pantalla.textContent = "0";
-            } else {
-                pantalla.textContent = pantalla.textContent.slice (0, -1);
-            }
-            return;
-        }
-
-        if (boton.id === "igual"){
-            try {
-            pantalla.textContent = eval(pantalla.textContent);
-            } catch {
-                pantalla.textContent = "Error";
-            }
-            return;
-        }
-
-        if (pantalla.textContent === "0"  || pantalla.textContent === "Error") {
-            pantalla.textContent = botonApretado;
-        } else {
-            pantalla.textContent += botonApretado;
-        }
-    })
-})
+    // Mostrar el resultado
+    document.getElementById('result').innerText = resultMessage;
+    document.getElementById('result-container').style.display = 'block';
+}
