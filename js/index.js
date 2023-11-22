@@ -1,34 +1,49 @@
-//Función calculateBudget
-function calculateBudget() {
+//Función CalculateLoan
+function CalculateLoan() {
     // Obtener los valores de precio y cuotas
-    let price = parseFloat(document.getElementById('price').value);
-    let installments = parseInt(document.getElementById('installments').value);
-    let interestRate = parseFloat(document.getElementById('interest').value);
+    let amount = parseFloat(document.getElementById('amount').value);
+    let interest = parseFloat(document.getElementById('interest').value);
+    let deadlines = parseInt(document.getElementById('deadlines').value);
+    
+    //Validar que los valores ingresados sean numericos
 
-    // Validar que la cantidad de cuotas y el precio sea mayor que cero
-    if (installments <= 0 || price <= 0) {
-        alert('Por favor, ingrese valores válidos para precio y cuotas.');
+    if (isNaN(amount) || isNaN(interest) || isNaN(deadlines)){
+        ShowError("Por favor, ingrese valores numericos validos");
         return;
     }
 
-    // Calcular el monto total y el monto de cada cuota
-    let total, installmentAmount;
-
-    if (interestRate > 0) {
-        // Calcular con interés
-        total = price * (1 + interestRate / 100);
-        installmentAmount = total / installments;
-    } else {
-        // Calcular sin interés
-        total = price;
-        installmentAmount = price / installments;
+    if (amount <= 0){
+        ShowError("El monto del prestamo debe ser mayor que cero");
+        return;
     }
 
-    // Mostrar el resultado
-    let resultMessage = 'Total a Pagar: $' + price.toFixed(2) + '<br>' +
-        'Cuotas: ' + installments + '<br>' +
-        'Monto de cada cuota: $' + installmentAmount.toFixed(2);
+    if (interest <= 0 || interest > 100){
+        ShowError("La tasa de interes debe estar entre 0 y 100");
+        return;
+    }
 
-    document.getElementById('result').innerHTML = resultMessage;
-    document.getElementById('result-container').style.display = 'block';
+    if (deadlines <= 0 || deadlines > 360){
+        ShowError("El plazo debe estar entre 1 y 360 meses");
+        return;
+    }
+
+
+    const MonthlyInterest = (interest / 100) / 12;
+    const X = Math.pow(1 + MonthlyInterest, deadlines);
+    const MonthlyPayment = (amount * X * MonthlyInterest) / (X - 1);
+
+    const ResultElement = document.getElementById("result");
+    ResultElement.innerHTML = `El pago mensual es : $${MonthlyPayment.toFixed(2)}`;
 }
+
+    function ShowError(message){
+        const errorElement = document.getElementById("error");
+        errorElement.style.display = "block"; //mostrar el elemento de error
+        //Establecer el mensaje de error recibido como parametro
+        errorElement.innerHTML = message; 
+        //Despues de 3 segundos , ocultamos el mensaje de error
+        setTimeout(() =>{
+            errorElement.style.display = "none"; //ocultar el elemento de error
+        }, 3000); //3000 milisegundos (3 segundos)
+    }
+

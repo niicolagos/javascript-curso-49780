@@ -49,3 +49,9 @@ button:hover {
 #result {
     font-size: 18px;
 }
+
+.error-message{
+    display: none;
+    color: #f00;
+    margin-top: 10px;
+}

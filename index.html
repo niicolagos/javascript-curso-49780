@@ -4,29 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Presupuesto</title>
+    <title>Calculadora de Prestamos</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <div class="container">
-        <h1>Simulador de Presupuesto</h1>
-        <form id="budget-form">
-            <label for="price">Precio del Producto/Servicio:</label>
-            <input type="number" id="price" placeholder="Ingrese el precio" required>
+        <h1>Calculadora de Prestamos</h1>
+        <form id="calculator-form">
+            <label for="amount">Monto del prestamo:</label>
+            <input type="number" id="amount" placeholder="Ingrese el monto" required>
 
-            <label for="installments">Cuotas:</label>
-            <input type="number" id="installments" placeholder="Ingrese la cantidad de cuotas" required>
+            <label for="interest">Tasa de interes %:</label>
+            <input type="number" id="interest" placeholder="Ingrese la tasa de interes" required>
 
-            <label for="interest">Porcentaje de Interés:</label>
-            <input type="number" id="interest" placeholder="Ingrese el porcentaje de interés">
+            <label for="deadlines">Plazo (en meses):</label>
+            <input type="number" id="deadlines" placeholder="Ingrese el plazo">
 
-            <button type="button" onclick="calculateBudget()">Calcular Presupuesto</button>
+            <button type="button" onclick="CalculateLoan()">Calcular Prestamo</button>
             <button type="reset">Limpiar</button>
+            <div id="error" class="error-message"></div>
         </form>
-        <div id="result-container" style="display: none;">
-            <h2>Resultado:</h2>
-            <p id="result"></p>
+        <div>
+            <h2 id="result">Resultado : </h2>
         </div>
     </div>
     <script src="./js/index.js"></script>
