@@ -1,4 +1,4 @@
-//Prompt para pedir nombre del usuario y el monto de su prestamo
+//Prompt para pedir nombre del usuario, monto, intereses y plazo
 function getUserData(){
     const userName = prompt("Hola, Por favor, ingresa tu nombre: ");
     const loanAmountInput = prompt("Hola " + userName + " Por favor, ingresa el monto del prestamo");
@@ -8,7 +8,8 @@ function getUserData(){
     const amount = parseFloat(loanAmountInput);
     const interestRate = parseFloat(interestInput);
     const deadlinesMonths = parseInt(deadlinesInput);
-  
+
+//Validaciones de datos solicitados
     if (isNaN(amount) || amount <= 0 || isNaN(interestRate) || interestRate <= 0  || isNaN(deadlinesMonths) || deadlinesMonths <= 0) {
       showError('Por favor, ingresa valores válidos para el monto, la tasa de interés y el plazo.');
       return;
@@ -42,7 +43,7 @@ function CalculateLoan(amount, interestRate, deadlinesMonths, userName) {
     function alert(message){
         const errorElement = document.getElementById("error");
         errorElement.style.display = "block"; //mostrar el elemento de error
-        //Establecer el mensaje de error recibido como parametro
+        //Establecerr el mensaje de error recibido como parametro
         errorElement.innerHTML = message; 
         //Despues de 3 segundos , ocultamos el mensaje de error
         setTimeout(() =>{
