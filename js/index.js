@@ -1,19 +1,27 @@
+//Prompt para pedir nombre del usuario y el monto de su prestamo
+function getUserData(){
+    let userName = prompt("Hola, Por favor, ingresa tu nombre: ");
+    let loanAmount = prompt("Hola" + userName + "Por favor, ingresa el monto del prestamo");
+
+    const AMOUNT = parseFloat(loanAmount);
+
+    if (isNaN(AMOUNT) || AMOUNT <= 0 ) {
+        alert("Por favor, ingresa un monto valido mayor que 0");
+        return;
+    }
+
+    CalculateLoan(AMOUNT);
+}
 //Función Calculadora de prestamos
 function CalculateLoan() {
     // Obtener los valores de precio, intereses y cuotas
-    let amount = parseFloat(document.getElementById('amount').value);
     let interest = parseFloat(document.getElementById('interest').value);
     let deadlines = parseInt(document.getElementById('deadlines').value);
     
     //Validar que los valores ingresados sean numericos
 
-    if (isNaN(amount) || isNaN(interest) || isNaN(deadlines)){
+    if (isNaN(interest) || isNaN(deadlines)){
         alert("Por favor, ingrese valores numericos validos");
-        return;
-    }
-
-    if (amount <= 0){
-        alert("El monto del prestamo debe ser mayor que cero");
         return;
     }
 
@@ -30,10 +38,10 @@ function CalculateLoan() {
 
     const MonthlyInterest = (interest / 100) / 12;
     const X = Math.pow(1 + MonthlyInterest, deadlines);
-    const MonthlyPayment = (amount * X * MonthlyInterest) / (X - 1);
+    const MonthlyPayment = (AMOUNT * X * MonthlyInterest) / (X - 1);
 
     const ResultElement = document.getElementById("result");
-    ResultElement.innerHTML = `El pago mensual es : $${MonthlyPayment.toFixed(2)}`;
+    ResultElement.innerHTML = `Hola ${userName}, el pago mensual sera de:  $${MonthlyPayment.toFixed(2)}`;
 }
 
     function alert(message){
@@ -46,4 +54,6 @@ function CalculateLoan() {
             errorElement.style.display = "none"; //ocultar el elemento de error
         }, 3000); //3000 milisegundos (3 segundos)
     }
+
+    getUserData();
 
