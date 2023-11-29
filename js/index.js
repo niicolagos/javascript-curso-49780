@@ -1,44 +1,39 @@
 //Prompt para pedir nombre del usuario y el monto de su prestamo
 function getUserData(){
-    let userName = prompt("Hola, Por favor, ingresa tu nombre: ");
-    let loanAmount = prompt("Hola" + userName + "Por favor, ingresa el monto del prestamo");
+    const userName = prompt("Hola, Por favor, ingresa tu nombre: ");
+    const loanAmountInput = prompt("Hola " + userName + " Por favor, ingresa el monto del prestamo");
+    const interestInput = parseFloat(prompt(" Ingresa la tasa de interes (%): "));
+    const deadlinesInput = parseInt(prompt("Ahora ingresa el plazo del prestamo (en meses): "));
 
-    const AMOUNT = parseFloat(loanAmount);
-
-    if (isNaN(AMOUNT) || AMOUNT <= 0 ) {
-        alert("Por favor, ingresa un monto valido mayor que 0");
-        return;
+    const amount = parseFloat(loanAmountInput);
+    const interestRate = parseFloat(interestInput);
+    const deadlinesMonths = parseInt(deadlinesInput);
+  
+    if (isNaN(amount) || amount <= 0 || isNaN(interestRate) || interestRate <= 0  || isNaN(deadlinesMonths) || deadlinesMonths <= 0) {
+      showError('Por favor, ingresa valores válidos para el monto, la tasa de interés y el plazo.');
+      return;
     }
-
-    CalculateLoan(AMOUNT);
-}
-//Función Calculadora de prestamos
-function CalculateLoan() {
-    // Obtener los valores de precio, intereses y cuotas
-    let interest = parseFloat(document.getElementById('interest').value);
-    let deadlines = parseInt(document.getElementById('deadlines').value);
-    
-    //Validar que los valores ingresados sean numericos
-
-    if (isNaN(interest) || isNaN(deadlines)){
-        alert("Por favor, ingrese valores numericos validos");
-        return;
-    }
-
-    if (interest <= 0 || interest > 100){
+    if (interestRate <= 0 || interestRate > 100){
         alert("La tasa de interes debe estar entre 0 y 100");
         return;
     }
 
-    if (deadlines <= 0 || deadlines > 360){
+    if (deadlinesMonths <= 0 || deadlinesMonths > 360){
         alert("El plazo debe estar entre 1 y 360 meses");
         return;
     }
-
-
-    const MonthlyInterest = (interest / 100) / 12;
-    const X = Math.pow(1 + MonthlyInterest, deadlines);
-    const MonthlyPayment = (AMOUNT * X * MonthlyInterest) / (X - 1);
+  
+    document.getElementById('loanAmount').value = amount; // Actualizar el valor del input con el monto
+    document.getElementById('interest').value = interestRate; // Actualizar el valor del input con la tasa de interés
+    document.getElementById('deadlines').value = deadlinesMonths; // Actualizar el valor del input con el plazo
+  
+    CalculateLoan(amount, interestRate, deadlinesMonths, userName); // Llama a la función para calcular el préstamo
+  }
+//Función Calculadora de prestamos
+function CalculateLoan(amount, interestRate, deadlinesMonths, userName) {
+    const MonthlyInterest = (interestRate / 100) / 12;
+    const X = Math.pow(1 + MonthlyInterest, deadlinesMonths);
+    const MonthlyPayment = (amount * X * MonthlyInterest) / (X - 1);
 
     const ResultElement = document.getElementById("result");
     ResultElement.innerHTML = `Hola ${userName}, el pago mensual sera de:  $${MonthlyPayment.toFixed(2)}`;
