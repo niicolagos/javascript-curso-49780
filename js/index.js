@@ -6,33 +6,28 @@ function guardarDatosEnLocalStorage(clave, valor) {
 }
 
 function obtenerDatosDeLocalStorage(clave) {
-    const valor = localStorage.getItem(clave);
-    return valor ? JSON.parse(valor) : null;
+    const valor = localStorage.getItem(clave); // Obtener el valor del localStorage asociado a la clave
+    return valor ? JSON.parse(valor) : null; // Devolver el valor si existe, convirtiéndolo de vuelta a un objeto o devuelve null si no hay nada
 }
 
-//Prompt para pedir nombre del usuario, monto, intereses y plazo
-function getUserData() {
-    const userName = prompt("Hola, Por favor, ingresa tu nombre: ");
-    const loanAmountInput = prompt("Hola " + userName + " Por favor, ingresa el monto del prestamo");
-    const interestInput = prompt(" Ingresa la tasa de interes (%): ");
-    const deadlinesInput = prompt("Ahora ingresa el plazo del prestamo (en meses): ");
-
-    const amount = parseFloat(loanAmountInput);
-    const interestRate = parseFloat(interestInput);
-    const deadlinesMonths = parseInt(deadlinesInput);
+function calcularPrestamo() {
+    const userName = document.getElementById(`userName`).value;
+    const amount = parseFloat(document.getElementById(`loanAmount`).value);
+    const interestRate = parseFloat(document.getElementById(`interest`).value);
+    const deadlinesMonth = parseInt(document.getElementById(`deadlines`).value);
 
     //Validaciones de datos solicitados
-    if (isNaN(amount) || amount <= 0 || isNaN(interestRate) || interestRate <= 0 || isNaN(deadlinesMonths) || deadlinesMonths <= 0) {
-        alert('Por favor, ingresa valores válidos para el monto, la tasa de interés y el plazo.');
+    if (isNaN(amount) || amount <= 0 || isNaN(interestRate) || interestRate <= 0 || isNaN(deadlinesMonth) || deadlinesMonth <= 0) {
+        mostrarError('Por favor, ingresa valores válidos para el monto, la tasa de interés y el plazo.');
         return;
     }
     if (interestRate <= 0 || interestRate > 100) {
-        alert("La tasa de interes debe estar entre 0 y 100");
+        mostrarError("La tasa de interes debe estar entre 0 y 100");
         return;
     }
 
-    if (deadlinesMonths <= 0 || deadlinesMonths > 360) {
-        alert("El plazo debe estar entre 1 y 360 meses");
+    if (deadlinesMonth <= 0 || deadlinesMonth > 360) {
+        mostrarError("El plazo debe estar entre 1 y 360 meses");
         return;
     }
 
@@ -41,49 +36,50 @@ function getUserData() {
         Nombre: userName,
         Monto: amount,
         TasaInteres: interestRate,
-        PlazoMeses: deadlinesMonths
+        PlazoMeses: deadlinesMonth
     };
 
     //Agregar el objeto al array de registros
     registros.push(entradaUsuario);
-    guardarDatosEnLocalStorage('registros', registros);
+    guardarDatosEnLocalStorage(`registros`, registros);
 
-    document.getElementById('loanAmount').value = amount; // Actualizar el valor del input con el monto
-    document.getElementById('interest').value = interestRate; // Actualizar el valor del input con la tasa de interés
-    document.getElementById('deadlines').value = deadlinesMonths; // Actualizar el valor del input con el plazo
+    calcularYmostrarElResultrado(amount, interestRate, deadlinesMonth, userName);// Llama a la función para calcular el préstamo
 
-    CalculateLoan(amount, interestRate, deadlinesMonths, userName); // Llama a la función para calcular el préstamo
+    // Crearr un nuevo elemento para mostrar un mensaje adicional
+    const adicionalMessage = document.createElement(`p`);
+    adicionalMessage.textContent = `Cálculo realizado con éxito!!`;
+    document.body.appendChild(adicionalMessage);
 }
 //Función Calculadora de prestamos
-function CalculateLoan(amount, interestRate, deadlinesMonths, userName) {
+function calcularYmostrarElResultrado(amount, interestRate, deadlinesMonth, userName) {
     const MonthlyInterest = (interestRate / 100) / 12;
-    const X = Math.pow(1 + MonthlyInterest, deadlinesMonths);
+    const X = Math.pow(1 + MonthlyInterest, deadlinesMonth);
     const MonthlyPayment = (amount * X * MonthlyInterest) / (X - 1);
 
     const ResultElement = document.getElementById("result");
     ResultElement.innerHTML = `Hola ${userName}, el pago mensual sera de:  $${MonthlyPayment.toFixed(2)}`;
-
-    // Crear un nuevo elemento para mostrar un mensaje adicional
-    const additionalMessage = document.createElement('p');
-    additionalMessage.textContent = '¡Cálculo realizado con éxito!';
-    document.body.appendChild(additionalMessage);
 }
 
-function alert(message) {
-    const errorElement = document.getElementById("error");
-    errorElement.style.display = "block"; //mostrar el elemento de error
-    //Establecerr el mensaje de error recibido como parametro
+function mostrarError(message) {
+    const errorElement = document.getElementById('error');
+    errorElement.style.display = 'block';
     errorElement.innerHTML = message;
-    //Despues de 3 segundos , ocultamos el mensaje de error
+
     setTimeout(() => {
-        errorElement.style.display = "none"; //ocultar el elemento de error
-    }, 3000); //3000 milisegundos (3 segundos)
+        errorElement.style.display = 'none';
+    }, 3000);
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    const registrosGuardados = obtenerDatosDeLocalStorage('registros');
+//verifica si existen datos previamente guardados en localStorage bajo la clave 'registros' y, en caso afirmativo, los añade al array registros.
+document.addEventListener(`DOMContentLoaded`, function () {
+    const registrosGuardados = obtenerDatosDeLocalStorage(`registros`);
     if (registrosGuardados) {
         registros.push(...registrosGuardados);
     }
 });
+
+
+document.getElementById(`calculateButton`).addEventListener(`click`, calcularPrestamo);
+
+
 

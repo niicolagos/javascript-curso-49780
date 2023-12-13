@@ -11,19 +11,25 @@
 <body>
     <div class="container">
         <h1>Calculadora de Prestamos</h1>
-        <form id="calculator-form">
+        <div id="inputs">
+            <label for="userName">Nombre: </label>
+            <input type="text" id="userName" placeholder="Ingresa tu nombre">
+        </div>
+        <div id="inputs">
             <label for="loanAmount">Monto del prestamo:</label>
             <input type="number" id="loanAmount" placeholder="Ingrese el monto" required>
-
+        </div>
+        <div id="inputs">
             <label for="interest">Tasa de interes %:</label>
             <input type="number" id="interest" placeholder="Ingrese la tasa de interes" required>
-
+        </div>
+        <div id="inputs">
             <label for="deadlines">Plazo (en meses):</label>
             <input type="number" id="deadlines" placeholder="Ingrese el plazo">
-
-            <button type="button" onclick="getUserData()">Calcular Prestamo</button>
-            <button type="reset">Limpiar</button>
-            <div id="error" class="error-message"></div>
+        </div>
+        <button id="calculateButton">Calcular Prestamo</button>
+        <button type="reset">Limpiar</button>
+        <div id="error" class="error-message"></div>
         </form>
         <div>
             <h2 id="result">Resultado : </h2>
