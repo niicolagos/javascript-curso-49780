@@ -27,9 +27,7 @@ do {
     alert("El resultado : " + resultado);
 
     continuar = prompt("quiere hacer otro calculo ? si/no").toLowerCase;
-
 } while (continuar === "si");
-
 
 //FUNCIONES
 
@@ -46,11 +44,11 @@ function pedirNombre() {
     console.log("ingresa el nombre " + ingresaNombre);
 }
 
-let numero = 0
+let numero = 0;
 
 while (numero < 3) {
     pedirNombre();
-    numero++
+    numero++;
 }
 pedirNombre();
 
@@ -88,19 +86,18 @@ const REA = CALCULAR_AREA_RECTANGULO(4, 3);
 
 console.log("el area del rectangulo es: " + AREA);
 
-
 //COTIZADOR DE IVA, METODOS Y OPERACIONES CON OBJETOS
 
 const IVA = 1.21;
 
 function Producto(nombre, precio, stock) {
-    this.nombre = nombre,
-        this.precio = precio,
-        this.stock = stock,
-        this.precioIVA = function () {
+    (this.nombre = nombre),
+        (this.precio = precio),
+        (this.stock = stock),
+        (this.precioIVA = function () {
             let precioFinal = this.precio * IVA;
-            return "$" + precioFinal
-        }
+            return "$" + precioFinal;
+        });
 }
 let producto1 = new Producto("pepas", 39, 2);
 
@@ -110,12 +107,13 @@ console.log(producto1.precioIva());
 
 class Persona {
     constructor(nombre, edad) {
-        this.nombre = nombre,
-            this.edad = edad
+        (this.nombre = nombre), (this.edad = edad);
     }
 
     saludar() {
-        console.log("Hola gente mi nombre es" + this.nombre + "y tengo " + this.edad);
+        console.log(
+            "Hola gente mi nombre es" + this.nombre + "y tengo " + this.edad
+        );
     }
 }
 
@@ -131,7 +129,7 @@ class Producto {
     constructor(nombre, precio) {
         this.nombre = nombre.toUpperCase();
         this.precio = parseFloat(precio);
-        this.vendido = false
+        this.vendido = false;
     }
 
     sumaIva() {
@@ -170,16 +168,15 @@ console.log(productos[2]);
 //constructor de objetos de array
 
 const POKEMONES = [
-
     {
         pokemon: "pikachu",
-        numeroPokemon: 1
+        numeroPokemon: 1,
     },
     {
         pokemon: "charmander",
-        numeroPokemon: 2
-    }
-]
+        numeroPokemon: 2,
+    },
+];
 
 // metodo lenght aplicado a un array
 
@@ -187,7 +184,9 @@ let estudiantes = ["juan", "soledad", "paulina", "nicolas"];
 
 let cantidadEstudiantes = estudiantes.length;
 //metodo lenght cuenta la cantidad de elementos que tiene el array
-console.log("la cantidad de estudiantes que posee la clase es : " + cantidadEstudiantes);
+console.log(
+    "la cantidad de estudiantes que posee la clase es : " + cantidadEstudiantes
+);
 
 //ej cadenas de texto
 
@@ -238,12 +237,11 @@ let oracion = palabras.join(" ");
 
 console.log(oracion);
 
-
 //metodo split, nos convierte una cadena de caracteres en un array
 
 const CADENA = "chicos estan aburridos ?";
 //si yo no pongo espacio entre las comillas en split, los va a contar por letra, por eso es necesario el espacio
-//con los numeros hay que colocar un guion - 
+//con los numeros hay que colocar un guion -
 let array = CADENA.split(" ");
 console.log(array);
 
@@ -283,8 +281,6 @@ console.log(estaLaFruta);
 frutas.reverse();
 console.log(frutas);
 
-
-
 let frutasForOf = ["manzana", "frutilla", "pera"];
 
 for (const frutaForOf of frutasForOf) {
@@ -298,17 +294,17 @@ for (const frutaForOf of frutasForOf) {
 const CARRITO = [
     {
         producto: "camiseta",
-        precio: 10
+        precio: 10,
     },
     {
         producto: "zapatilla",
-        precio: 20
+        precio: 20,
     },
     {
         producto: "chaleco",
-        precio: 30
+        precio: 30,
     },
-]
+];
 let precioTotal = 0;
 
 for (const item of CARRITO) {
@@ -331,10 +327,10 @@ console.log(MAYOR_QUE_DIEZ(9));
 function asignarOperacion(operacion) {
     if (operacion === "sumar") {
         return function (numero1, numero2) {
-            return numero1 + numero2
-        }
+            return numero1 + numero2;
+        };
     } else if (operacion == "resta") {
-        return (numero1, numero2) => numero1 - numero2
+        return (numero1, numero2) => numero1 - numero2;
     }
 }
 
@@ -350,7 +346,7 @@ console.log(restar(6, 3));
 // arr(array) fn (funcion)
 function porCadaUno(arr, fn) {
     for (const elemento of arr) {
-        fn(elemento)
+        fn(elemento);
     }
 }
 
@@ -372,34 +368,33 @@ const sumar5 = crearSumador(5); // Creamos una función que suma 5 a su argument
 const resultado = sumar5(10); // Llamamos a la función y le pasamos 10 como argumento
 console.log(resultado); // Esto imprimirá 15, ya que 5 + 10 = 15
 
-
 //forEach nos permite iterar de manera rapida un array
 const NUMERITOS = [1, 2, 3, 4, 5];
 
 NUMERITOS.forEach(function (numero) {
     const RESULTADO = numero * 2;
     console.log(RESULTADO);
-})
+});
 
 //otro ejemplo forEach
 
 const ESTUDIANTES = [
     {
         nombre: "ana",
-        edad: 20
+        edad: 20,
     },
     {
         nombre: "pepe",
-        edad: 30
+        edad: 30,
     },
     {
         nombre: "gina",
-        edad: 10
+        edad: 10,
     },
-]
+];
 
 function saludarEstudiante(estudiantes) {
-    console.log(`hola ${estudiantes.nombre}, edad ${estudiantes.edad}`)
+    console.log(`hola ${estudiantes.nombre}, edad ${estudiantes.edad}`);
 }
 
 ESTUDIANTES.forEach(saludarEstudiante);
@@ -408,35 +403,41 @@ ESTUDIANTES.forEach(saludarEstudiante);
 
 const PRODUCTOS = [
     {
-        articulo: "laptop", precio: 1000
+        articulo: "laptop",
+        precio: 1000,
     },
     {
-        articulo: "mother", precio: 500
+        articulo: "mother",
+        precio: 500,
     },
     {
-        articulo: "mouse", precio: 20
+        articulo: "mouse",
+        precio: 20,
     },
     {
-        articulo: "teclado", precio: 30
-    }
-]
+        articulo: "teclado",
+        precio: 30,
+    },
+];
 
 //funcion aplicar descuento
 
-function aplicarDescuento(producto){
+function aplicarDescuento(producto) {
     const DESCUENTO = 0.1;
     const PRECIO_CON_DESCUENTO = producto.precio * (1 - DESCUENTO);
-    console.log(`producto ${producto.articulo}, precio con descuento: ${PRECIO_CON_DESCUENTO}`);
+    console.log(
+        `producto ${producto.articulo}, precio con descuento: ${PRECIO_CON_DESCUENTO}`
+    );
 }
 
 PRODUCTOS.forEach(aplicarDescuento);
 
-//FIND 
+//FIND
 //nos dice que va a encontrar el primer elemento del array que cumpla con la condicion
 //retorna un valor solo, el primero que cumpla con la condicion
 const USUARIO_MAYOR_EDAD = ESTUDIANTES.find(function (estudiante) {
     return estudiante.edad > 25;
-})
+});
 console.log(USUARIO_MAYOR_EDAD);
 
 //FILTER se utiliza para crear arrays nuevos con los elementos que cumplan una condicion
@@ -449,7 +450,7 @@ if (isNaN(PRECIO_MINIMO_USUARIO)) {
     const PRODUCTO_FILTRADO = PRODUCTOS.filter(function (producto) {
         return producto.precio >= PRECIO_MINIMO_USUARIO;
     });
-    console.log("productos que cumplan con la condicion", PRODUCTO_FILTRADO)
+    console.log("productos que cumplan con la condicion", PRODUCTO_FILTRADO);
 }
 
 //SOME verifica si al menos un elemento cumple del array con alguna condicion
@@ -463,24 +464,23 @@ let hayNumeroMayoa10 = NUMERITO.some(function (numero) {
 
 console.log(hayNumeroMayoa10);
 
-//MAPS 
+//MAPS
 //agarra un array ya hecho y cambia sus elementos originales por otros segun la funcion que se le envie.
 //usamos array de productos hecho mas arriba
 
 let nombreEnMayus = PRODUCTOS.map(function (producto) {
     return producto.articulo.toUpperCase();
-})
+});
 console.log(nombreEnMayus);
-
 
 let porcentajeAumentado = 0.5;
 
 let precioAumentado = PRODUCTOS.map(function (producto) {
     return {
         articulo: producto.articulo,
-        precio: producto.precio * (1 + porcentajeAumentado)
-    }
-})
+        precio: producto.precio * (1 + porcentajeAumentado),
+    };
+});
 
 console.log(precioAumentado);
 
@@ -492,11 +492,11 @@ console.log(precioAumentado);
 
 //ejemplo
 
-let nummeros = [1,2,3,4,5];
+let nummeros = [1, 2, 3, 4, 5];
 
-let suma = nummeros.reduce(function(acumulador,nummeros){
-    return acumulador + nummeros
-},0); //el 0 significa desde donde va a comenzar a contar el acumulador
+let suma = nummeros.reduce(function (acumulador, nummeros) {
+    return acumulador + nummeros;
+}, 0); //el 0 significa desde donde va a comenzar a contar el acumulador
 //osea desde el indice 0
 //si se pone un 1 o otro numero, se le suma a toda la suma
 console.log(suma);
@@ -509,15 +509,15 @@ console.log(suma);
 //}
 
 const CARRITTO = [
-    {producto: "camiseta", precio:20},
-    {producto: "pantalon", precio:10},
-    {producto: "remera", precio:30}
-]
+    { producto: "camiseta", precio: 20 },
+    { producto: "pantalon", precio: 10 },
+    { producto: "remera", precio: 30 },
+];
 
-let productosOrdenados = CARRITTO.sort((a,b) => a.precio - b.precio);
+let productosOrdenados = CARRITTO.sort((a, b) => a.precio - b.precio);
 
 //de esta manera tenemos los arrays de manera creciente
-console.log("productos ordenados"+ productosOrdenados);
+console.log("productos ordenados" + productosOrdenados);
 
 //objeto math
 //nos va a proporcionar propiedades matematicas y metodos
@@ -530,12 +530,12 @@ console.log("productos ordenados"+ productosOrdenados);
 //math.min => nos devuelve el valor mas pequeño entre los numeros
 //que se proporcionan en un listado
 
-let minimo = Math.min(75,44,23);
+let minimo = Math.min(75, 44, 23);
 console.log("minimo" + minimo);
 
 //math.max => devuelve el valor mas grande entra numeros de un listado
 
-let maximo = Math.max(75,54,22);
+let maximo = Math.max(75, 54, 22);
 console.log("Maximo" + maximo);
 
 //ceil,floor,round => metodos para redondear numeros o valores
@@ -569,7 +569,7 @@ console.log(potencia);
 let numeroAleatorio = Math.random();
 console.log(numeroAleatorio);
 
-console.log(Math.round(Math.random() * 10)); 
+console.log(Math.round(Math.random() * 10));
 // multiplica por 10 y va intercalando del 0 al 10, el metodo round
 // lo redondea
 
@@ -578,7 +578,6 @@ console.log(Math.round(Math.random() * 10));
 //los numeros esten entre un intervalo de 10 y 50
 
 console.log(Math.round(Math.random() * 40 + 10));
-
 
 /************************** */
 
@@ -590,7 +589,7 @@ console.log(fechaActual);
 
 // date informacion , => año - mes - dia - hora- min - seg
 
-let fechaEspecifica = new Date (2023, 11 ,15 ,0o3 , 0o1, 12);
+let fechaEspecifica = new Date(2023, 11, 15, 0o3, 0o1, 12);
 console.log(fechaEspecifica);
 
 //si quiero sacar el año es
@@ -623,4 +622,519 @@ console.log(fechaActual.toDateString()); // te da los datos del dia mes y año
 console.log(fechaActual.toLocaleString()); //
 console.log(fechaActual.toLocaleDateString()); // fecha ej 12/11/2021
 console.log(fechaActual.toLocaleTimeString()); //te da el horario segundos y ,inutos
+
+//Existen varias formas de acceder al DOM pero se utilizan 5 que son importantes
+
+//ID = getElementById("nombre del ID")=> metodo del objeto del documento que se utiliza para selecionn y recuperar un elemento del HTML del DOM
+
+//ej
+const TITULO = document.getElementById("tituloPrincipal");
+console.log(TITULO);
+
+//CLASES = getElementsByClassName("")=> metodo que se utiliza para captar los elementos de HTML que posean clases
+
+const NOMBRES = document.getElementsByClassName("nombres");
+console.log(NOMBRES);
+
+//TAG = getElementsByTagName("") => metodo que se utiliza para captar las etiquetas
+
+let etiqueta = document.getElementsByTagName("eti");
+console.log(etiqueta);
+
+//querySelector => nos permite sleccionar nodos con la misma sintaxis que CSS
+//toma el primer elemento que encuentra en HTML que tenga la clase nombres
+let queryNombres = document.querySelector(".nombres");
+console.log(queryNombres);
+
+//querySelectorAll => es lo mismo qu queryselector solo que trae todos los elementos que tengan la misma clase
+let queryNombreAll = document.querySelectorAll(".nombres");
+console.log(queryNombreAll);
+
+//Modificar nodos
+
+//innerText => no es mas que una propiedad, en la cual nosotros vamos a poder acceder
+//a texto visible dentro de un elemento, omitiendo cualquier contenido de HTML
+
+//Ej
+TITULO.innerText = " estoy jugando con innterText";
+//modifica todo el texto atraves de javascript
+
+//innerHTML => se utiliza para obtener o establecer contenido HTML interno de un elemento.
+//incluye todas las etiquetas de HTML.
+//lo ucal nos permite HTML desde JS.
+
+const DIV_NUEVO = document.getElementById("divContenedor");
+
+// DIV_NUEVO.innerHTML = '<div>
+//<p><p>
+//<div>
+//<button>agregar carro <button>
+//se pueden modificar las etiquetas html directo desde js
+
+//Agregar nodos desde JS
+//se hacve atraves del metodo createelement("")
+// crea nuevos elementos directamente
+
+//variable = document.createElement("nombre del elemento");
+
+let parrafo = document.createElement("p"); //creamos el tipo de etiqueta
+
+//textocontent, inyectamos el contenido a la etiqueta
+parrafo.textContent = "hola, este parrafo lo cree desde Js";
+
+//ubicamos la etiqueta parrafo en el body , se usa appendChild
+//indica que parrafo va a ser hija del body por el metodo appendChild
+document.body.appendChild(parrafo);
+
+//eventos
+
+//los eventos son la manera que tenemos en JS de controlar, las acciones de
+//usuarios y definir un comportamiento cuando se produzca
+
+//los eventos para que funcionen usamos una herramienta llamada manejador de enventos
+
+//existen 3 formas de realizar la escucha de un evento
+
+//1ero: vincular la etiqueta con el ID
+
+const BTN = document.getElementById("btn");
+
+//vamos a utilizar un metodo de js addEventListener = se utiliza paar registrar
+//un controlador de eventos en un objeto especifico
+//el emento que va a controlar es un elemento del DOM
+
+//sintaxis basica de addEventListener
+
+// elemento.addEventListener(evento,function)
+//el evento hace referencia a la accion que se ejecuta sobre el elemento
+//funcion va a ejecutar lo que queremos que se produzca
+
+BTN.addEventListener('click', function () {
+    alert("se hizo click en el boton");
+})
+
+//2do metodo : utilizamos las propiedades del NODO.
+
+const BTN_DOS = document.getElementById("btnDos");
+
+BTN_DOS.onclick = () => {
+    alert("estamos usando la segunda forma");
+}
+
+//3er metodo : escribiendo funciones en el HTML
+
+function jsEnHtml() {
+    alert("estamos llamando una funcion desde HTML");
+}
+
+//en HTML la etiqueta estaria asi
+
+// <button onclick = "jsEnHtml()" > js en HTML </button>
+
+
+// eventos de mouse => se producen cuando el usuario interactue con el mouse
+
+//onmouseover => el puntero del mouse se mueve sobre el elemento
+
+CAJA.onmouseover = () => {
+    console.log("esta pasando el mouse sobre la caja");
+}
+
+//onmouseout => detecta cuando el mouse sale del elemento
+
+CAJA.onmouseout = () => {
+    console.log("esta saliendo el mouse sobre la caja");
+}
+
+//mousemove => determinar el movimiento del mouse sobre un elemento
+
+CAJA.onmousemove = () => {
+    console.log("paso el mouse sobre la caja");
+}
+
+// mousedown / mouseup => cuando se oprime o se suelta el elemento con el click del raton
+
+CAJA.onmousedown = () => {
+    console.log("mousedown");
+}
+
+CAJA.onmouseup = () => {
+    console.log("mouseup");
+}
+
+//eventos de teclado
+
+//keydown => nos va a informar cuando se preciona una tecla
+//keyup => nos dice cuando se suelta una tecla
+
+const CAMPO_TEXTO = document.getElementById("campoTexto");
+
+CAMPO_TEXTO.onkeydown = () => {
+    console.log("tecla presionada");
+}
+CAMPO_TEXTO.onkeyup = () => {
+    console.log("quitamos la tecla presionada");
+}
+
+//change => se activa cuando se detecta un cambio en el valor del elemento
+
+CAMPO_TEXTO.addEventListener('change', function () {
+    console.log("valor cambiado: " + CAMPO_TEXTO.value);
+})
+
+//input => permitir ejecutar una funcion cada vez que el usuario ingrese texto en el campo
+
+CAMPO_TEXTO.addEventListener('input', () => {
+    console.log(CAMPO_TEXTO.value);
+})
+
+//submit => se activa cuando un formulario es enviado
+
+class cliente {
+    constructor(nombre, apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
+}
+
+const arrayClientes = [];
+
+const formulario = document.getElementById("formulario");
+
+formulario.addEventListener('submit', (e) => {
+    e.preventDefault(); //
+
+    const nombre = document.getElementById("nombre");
+    const apellido = document.getElementById("apellido");
+
+    //verificar por consola que capte los datos
+    console.log("el nombre ingresado es: " + nombre.value);
+    console.log("el apellido ingresado es: " + apellido.value);
+
+    //creamos el objeto cliente
+
+    const cliente = new Cliente(nombre.value, apellido.value);
+    arrayClientes.push(cliente);
+
+    //verificamos por consola el array
+
+    console.log(arrayClientes);
+
+    formulario.reset(); //una vez que se envia el formulario se resetea
+})
+
+
+// STORAGE Y JSON
+
+//storage nos permite guardar datos de manera local en el navegador
+//2 maneras de guardar datos en el navegador
+//sessionStorage : va a almacenar los datos de forma temporal, a diferencia de local, se pierden los datos si se cierra el navegador
+//los datos almacenados solamente van a estar disponibles mientras dura la sesion en el navegador
+//localStorage : los datos se van a almacenar de manera indefinida , por mas que cierres el navegador apagues la compu, van a seguir ahi, se almacena de manera local
+
+//setItem : es un metodo que proporciona el objeto localStorage
+//ccon esta manera almacenamos los datos de manera local
+
+//LocalStorage : 
+//string
+localStorage.setItem("saludos","hola chicos"); //primer parametro lo que se quiere guardar, y segundo su valor
+
+//almacenar numeros
+localStorage.setItem("numero",1234);
+
+//booleanos
+localStorage.setItem("boolean",true);
+
+//como recuperamos lo que seteamos
+
+//getItem : es el metodo por el cual nosotros recuperamos los valores de las llaves almacenadas en el navegador
+
+//seteo o setear : estamos guardando un valor
+
+let valor = localStorage.getItem("saludo");// se coloca la key, que siempre es el primer parametro que se pasa en setitem
+
+console.log(valor);
+
+//almacenar un numero como una cadena en el localstorage
+
+localStorage.setItem("numeros", 42);
+
+let numeroComoCadena = localStorage.getItem("numeros");
+let numeroComoNumber = parseInt(numeroComoCadena);
+
+console.log(numeroComoNumber);
+
+//SessionStorage : funciona similar a localstorage
+
+sessionStorage.setItem("nombres","emilio");
+
+let nombresDos = sessionStorage.getItem("nombres");
+console.log(nombresDos);
+
+//removeItems : es un metodo de localstorage que nos permite eliminar o remover un elemento
+
+localStorage.setItem("eliminar","frase a eliminar");
+
+let valorEliminado = localStorage.getItem("eliminar");
+
+//este elimina de manera global todo los datos almacenados
+localStorage.clear()
+
+localStorage.removeItem("eliminar"); //elimina los datos del elemento eliminar
+
+//recorrer el localstorage.setItem()
+
+localStorage.setItem("nombre","juan");
+localStorage.setItem("edad",25);
+localStorage.setItem("ciudad","MDQ");
+
+//obtener todas las claves almacenadas en el localstorage
+
+let todasLasClaves = Object.keys(localStorage);
+//devuelve un arreglo con todos los nombres de propiedades enumerables(claves)
+
+//recorrer las claves
+
+for(let i = 0 ; i <todasLasClaves.length; i ++){
+    let clave = todasLasClaves [i];
+    let valor = localStorage.getItem(clave);
+
+    console.log (clave, valor);
+}
+
+//JSON
+
+//javaScript object notation
+//notacion de objetos de javascript
+// es un formato de intercambio de datos
+//ligero y facil de leer , Json es un formato independiente de lenguaje
+//lo vamos a estar utilizando para representar datos estructurados
+
+//objeto de personas
+
+let persona= {
+    nombre : "juan",
+    edad : 25,
+    ciudad : "mar del plata"
+};
+
+//stringify = es una funcion que convierte cualquier objeto en una cadena de Json
+//va a tomar un objeto como argumento y devuelve una cadena de texto
+
+let jsonPersona= JSON.stringify(persona);
+
+console.log(jsonPersona);
+
+//modo oscuro - modo claro
+
+//1 - crear un boton que cambie el metodo de la pagina
+
+//2 almacenar el modo seleccionado en el storage
+//3 al recargar la pagina , recuperamos el modo
+//4 cambiamos el modo de la pagina
+
+const botonModo = document.getElementById("botonModo");
+
+botonModo.addEventListener("click", ()=>{
+    document.body.classList.toggle("dark"); //es una propiedad que proporciona acceso a la lista de clases aplicadas al elemento body
+    //toggle añadir si no esta presente, quitar si esta presente
+    if(document.body.classList.contains("darks")){ // hacer algo si la clase esta presente
+        localStorage.setItem("modo","dark");
+    }else {
+        localStorage.setItem("modo","claro");
+    }
+
+});
+
+
+class Producto {
+    constructor(nombre,precio){
+        this.nombre = nombre;
+        this.precio = precio;
+    }
+}
+
+const product1 = new Producto ("camisa", 500);
+const product2 = new Producto ("jean", 300);
+const product3 = new Producto ("remera", 400);
+
+const carrito = [];
+
+carrito.push(product1);
+carrito.push(product2);
+carrito.push(product3);
+
+console.log(carrito);
+
+const carritoJSON = JSON.stringify(carrito);
+
+//almacenando el carrito en el localStorage
+
+localStorage.setItem("carrito", carritoJSON);
+
+//recuperamos el carrito de localStorage
+
+const carritoRecuperado = localStorage.getItem("carrito");
+
+//convertir el json en un objeto
+
+const carritoObjeto = JSON.parse(carritoRecuperado);
+
+//imprimir todo en HTML
+
+const contenedorCarrito = document.getElementById("contenedorCarrito")
+
+carritoObjeto.forEach(producto => {
+    contenedorCarrito.innerHTML += `
+    <p> ${producto.nombre} - ${producto.precio} </p>
+    `;
+});
+
+
+//operadores avanzados
+
+//operador ++
+//aumentar el valor de la variable en 1
+
+//operador ternario
+//es una manera resumida de escribir o de hacer un if else
+//nos va a permitir realizar una evaluacion de condicion y devolver un valor en vbase a eso
+
+//posee 3 partes:
+//condicion booleana ? valor_si_es_verdadero : valor_si_es_falso;
+
+let mayorEdad1 = 18;
+
+if (mayorEdad1 >= 18){
+    console.log("es mayor");
+}else{
+    console.log("es menor");
+}
+//los operadores ternarios poseen return implicito.
+let resultado2 = mayorEdad1 >= 19 ? console.log("es mayor ternario") : console.log("es menor ternario");
+
+//operador logico and && => podemos nosotros simplificar la condicion if e una sola linea de codigo
+
+let nombreCliente = "maxi";
+
+nombreCliente === "maxi" && alert ("hola maxi");
+
+//operador logico or  => revisa una de las 2 condiciones se cumpla.
+//lo vamos a utilizar para almacenar datos en variables
+
+//concepto de falsy=> hace referencia a aquellos valores que se evaluan como falsos.
+
+//false es parte de la condicion booleana.
+//existen tipos de datos que nacen por defectos falsos
+//1 => false de booleanos => el primer valor que esta dentro de los falsy
+//2 => 0 tambien se considera falsy.
+//3 => null tambien se considera falsy, significa nulo
+//4 => undefined el valor indefinido tambien es falsy
+//5 => naN not a number tambien es falsy
+//6 => "" cadena vacia tambien se considera falsy
+
+// ejemplo de pedir dato al usuario
+
+let name = prompt("ingrese el nombre");
+
+console.log(name || "invitado"); //si en la consola se pone cancelar y no pone nombre 
+/// va a saltar como null osea falsso, ponemos el operador or para que salga como invitado
+//ya que null es falso
+
+//operador nullish coalescing
+// operador fusion nula, se representa a traves de  ??
+//nos ayuda a proporcionar una forma de evaluar y devolver un valor predeterminado.
+//funciona igual que or con la diferencia que admite mas valores como verdaderos.
+// const resultado = valorIzquierdo ?? valorPredeterminado;
+
+const x = null;
+const y = "valor predeterminado";
+
+const result1 = x ?? y;
+
+console.log(result1);
+
+//acceso condicional a un objeto
+
+//caracteristica de js que utilizamos para acceder a propiedades de un objeto
+//sin generar error si el objeto o la propiedad no existen.
+
+const usuario = null;
+
+console.log( usuario.nombre || "el usuario no existe");
+//error : " no se pueden leer propiedadees de null"
+//el operador ? busca en usuario la parte nombre y si existe lo imprime, sino salta el usuario no existe
+console.log(usuario?.nombre || "el usuario no existe");
+
+//destructuring o desestructuracion.
+//expresion de js las cuales nos permiten descomponer estructuras de datos, objetos o los arrays
+//esto lo vamos a convertir en variables pequeñas y manejables.
+//nos va ahacer mas facil la vida cuando trabajamos con datos estructurados y vamos a tener variables mas consisas.
+
+//destructuracion de objetos
+
+const PERSONA = {
+    nombre3:"nico",
+    edad: 30,
+    provincia : "cordoba"
+};
+
+const {nombre3:nombre3PERSONA2, edad:edadPERSONA2, provincia:provinciaPERSONA2} = PERSONA;
+
+console.log(nombre);
+console.log(edad);
+console.log(provincia);
+//para que la desestructuracion funcione debe haber coincidencai con los nombres de las propiedades
+// del objeto. 
+//sin embargo a veces puede que los nombres de las propiedades no sean muy descriptivos
+//para el uso que queremos darle, y por ellos podemos desestructurarlas
+//con un alias, es decir declarar la variable con un nombre alternativo tras haber desestructurado el objeto
+const PERSONA2 = {
+    nombre3: "roberto",
+    edad: 12,
+    provincia: "bs as"
+};
+
+const {nombre3, edad , provincia} = PERSONA2;
+
+//desestructuracion de parametros
+
+const alumno ={
+    nombre: "juan",
+    edad : 30
+};
+
+function mostrarDatos(objeto){
+    console.log(`hola mi nombre es ${objeto.nombre} y tengo ${objeto.edad}`)
+}
+
+mostrarDatos(alumno);
+
+//desestructurar seria
+function mostrarDatos({nombre, edad}){
+    console.log(`hola mi nombre es ${nombre} y tengo ${edad}`)
+}
+
+//desestructuracion de array
+
+const frutas2 = ["manzanas", "naranja", "frutilla", "mandarina"];
+
+const [fruta1, fruta2, ,fruta3] = frutas2;
+
+console.log(fruta1);
+console.log(fruta2);
+console.log(fruta3);
+//al imprimir va a saltear el espacio blanco y va aimprimir manddarina ya que array tiene indices
+
+
+//podemos asignar valores
+
+const alumno4 ={
+    nombre5: "juan",
+    edad3 : 30
+};
+
+const {nombre5, edad3, ciudad= "mar del plata" } = alumno4;
+
+console.log(ciudad);
 
