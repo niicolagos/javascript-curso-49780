@@ -837,13 +837,13 @@ formulario.addEventListener('submit', (e) => {
 
 //LocalStorage : 
 //string
-localStorage.setItem("saludos","hola chicos"); //primer parametro lo que se quiere guardar, y segundo su valor
+localStorage.setItem("saludos", "hola chicos"); //primer parametro lo que se quiere guardar, y segundo su valor
 
 //almacenar numeros
-localStorage.setItem("numero",1234);
+localStorage.setItem("numero", 1234);
 
 //booleanos
-localStorage.setItem("boolean",true);
+localStorage.setItem("boolean", true);
 
 //como recuperamos lo que seteamos
 
@@ -866,14 +866,14 @@ console.log(numeroComoNumber);
 
 //SessionStorage : funciona similar a localstorage
 
-sessionStorage.setItem("nombres","emilio");
+sessionStorage.setItem("nombres", "emilio");
 
 let nombresDos = sessionStorage.getItem("nombres");
 console.log(nombresDos);
 
 //removeItems : es un metodo de localstorage que nos permite eliminar o remover un elemento
 
-localStorage.setItem("eliminar","frase a eliminar");
+localStorage.setItem("eliminar", "frase a eliminar");
 
 let valorEliminado = localStorage.getItem("eliminar");
 
@@ -884,9 +884,9 @@ localStorage.removeItem("eliminar"); //elimina los datos del elemento eliminar
 
 //recorrer el localstorage.setItem()
 
-localStorage.setItem("nombre","juan");
-localStorage.setItem("edad",25);
-localStorage.setItem("ciudad","MDQ");
+localStorage.setItem("nombre", "juan");
+localStorage.setItem("edad", 25);
+localStorage.setItem("ciudad", "MDQ");
 
 //obtener todas las claves almacenadas en el localstorage
 
@@ -895,11 +895,11 @@ let todasLasClaves = Object.keys(localStorage);
 
 //recorrer las claves
 
-for(let i = 0 ; i <todasLasClaves.length; i ++){
-    let clave = todasLasClaves [i];
+for (let i = 0; i < todasLasClaves.length; i++) {
+    let clave = todasLasClaves[i];
     let valor = localStorage.getItem(clave);
 
-    console.log (clave, valor);
+    console.log(clave, valor);
 }
 
 //JSON
@@ -912,16 +912,16 @@ for(let i = 0 ; i <todasLasClaves.length; i ++){
 
 //objeto de personas
 
-let persona= {
-    nombre : "juan",
-    edad : 25,
-    ciudad : "mar del plata"
+let persona = {
+    nombre: "juan",
+    edad: 25,
+    ciudad: "mar del plata"
 };
 
 //stringify = es una funcion que convierte cualquier objeto en una cadena de Json
 //va a tomar un objeto como argumento y devuelve una cadena de texto
 
-let jsonPersona= JSON.stringify(persona);
+let jsonPersona = JSON.stringify(persona);
 
 console.log(jsonPersona);
 
@@ -935,28 +935,28 @@ console.log(jsonPersona);
 
 const botonModo = document.getElementById("botonModo");
 
-botonModo.addEventListener("click", ()=>{
+botonModo.addEventListener("click", () => {
     document.body.classList.toggle("dark"); //es una propiedad que proporciona acceso a la lista de clases aplicadas al elemento body
     //toggle añadir si no esta presente, quitar si esta presente
-    if(document.body.classList.contains("darks")){ // hacer algo si la clase esta presente
-        localStorage.setItem("modo","dark");
-    }else {
-        localStorage.setItem("modo","claro");
+    if (document.body.classList.contains("darks")) { // hacer algo si la clase esta presente
+        localStorage.setItem("modo", "dark");
+    } else {
+        localStorage.setItem("modo", "claro");
     }
 
 });
 
 
 class Producto {
-    constructor(nombre,precio){
+    constructor(nombre, precio) {
         this.nombre = nombre;
         this.precio = precio;
     }
 }
 
-const product1 = new Producto ("camisa", 500);
-const product2 = new Producto ("jean", 300);
-const product3 = new Producto ("remera", 400);
+const product1 = new Producto("camisa", 500);
+const product2 = new Producto("jean", 300);
+const product3 = new Producto("remera", 400);
 
 const carrito = [];
 
@@ -1005,9 +1005,9 @@ carritoObjeto.forEach(producto => {
 
 let mayorEdad1 = 18;
 
-if (mayorEdad1 >= 18){
+if (mayorEdad1 >= 18) {
     console.log("es mayor");
-}else{
+} else {
     console.log("es menor");
 }
 //los operadores ternarios poseen return implicito.
@@ -1017,7 +1017,7 @@ let resultado2 = mayorEdad1 >= 19 ? console.log("es mayor ternario") : console.l
 
 let nombreCliente = "maxi";
 
-nombreCliente === "maxi" && alert ("hola maxi");
+nombreCliente === "maxi" && alert("hola maxi");
 
 //operador logico or  => revisa una de las 2 condiciones se cumpla.
 //lo vamos a utilizar para almacenar datos en variables
@@ -1061,7 +1061,7 @@ console.log(result1);
 
 const usuario = null;
 
-console.log( usuario.nombre || "el usuario no existe");
+console.log(usuario.nombre || "el usuario no existe");
 //error : " no se pueden leer propiedadees de null"
 //el operador ? busca en usuario la parte nombre y si existe lo imprime, sino salta el usuario no existe
 console.log(usuario?.nombre || "el usuario no existe");
@@ -1074,12 +1074,12 @@ console.log(usuario?.nombre || "el usuario no existe");
 //destructuracion de objetos
 
 const PERSONA = {
-    nombre3:"nico",
+    nombre3: "nico",
     edad: 30,
-    provincia : "cordoba"
+    provincia: "cordoba"
 };
 
-const {nombre3:nombre3PERSONA2, edad:edadPERSONA2, provincia:provinciaPERSONA2} = PERSONA;
+const { nombre3: nombre3PERSONA2, edad: edadPERSONA2, provincia: provinciaPERSONA2 } = PERSONA;
 
 console.log(nombre);
 console.log(edad);
@@ -1095,23 +1095,23 @@ const PERSONA2 = {
     provincia: "bs as"
 };
 
-const {nombre3, edad , provincia} = PERSONA2;
+const { nombre3, edad, provincia } = PERSONA2;
 
 //desestructuracion de parametros
 
-const alumno ={
+const alumno = {
     nombre: "juan",
-    edad : 30
+    edad: 30
 };
 
-function mostrarDatos(objeto){
+function mostrarDatos(objeto) {
     console.log(`hola mi nombre es ${objeto.nombre} y tengo ${objeto.edad}`)
 }
 
 mostrarDatos(alumno);
 
 //desestructurar seria
-function mostrarDatos({nombre, edad}){
+function mostrarDatos({ nombre, edad }) {
     console.log(`hola mi nombre es ${nombre} y tengo ${edad}`)
 }
 
@@ -1119,7 +1119,7 @@ function mostrarDatos({nombre, edad}){
 
 const frutas2 = ["manzanas", "naranja", "frutilla", "mandarina"];
 
-const [fruta1, fruta2, ,fruta3] = frutas2;
+const [fruta1, fruta2, , fruta3] = frutas2;
 
 console.log(fruta1);
 console.log(fruta2);
@@ -1129,12 +1129,14 @@ console.log(fruta3);
 
 //podemos asignar valores
 
-const alumno4 ={
+const alumno4 = {
     nombre5: "juan",
-    edad3 : 30
+    edad3: 30
 };
 
-const {nombre5, edad3, ciudad= "mar del plata" } = alumno4;
+const { nombre5, edad3, ciudad = "mar del plata" } = alumno4;
 
 console.log(ciudad);
+
+
 
