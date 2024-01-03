@@ -1139,4 +1139,141 @@ const { nombre5, edad3, ciudad = "mar del plata" } = alumno4;
 console.log(ciudad);
 
 
+/// SPREAD OPERADOR se declara (...)
+//Operador de propagacion , utilizamos estos para desempaquetar elementos de un array o propiedades de un objeto
+
+//arrays 
+//copiar arrays
+
+let arrayOriginal = [1, 2, 3, 4];
+
+let copiaArray = [...arrayOriginal];
+
+console.log(copiaArray);
+
+// podemos concatenar arrays
+
+let arrayDos = [5, 6, 7];
+
+let arrayConcat = [...arrayOriginal, ...arrayDos];
+
+console.log(arrayConcat);
+
+//añadir elementos al array
+
+let nuevoArray = [...arrayOriginal, 5, 6, 7];
+
+console.log(nuevoArray);
+
+//ejemplo 
+
+const nombres1 = ["juan", "julieta"];
+const nombres2 = ["carlos", "mariela"];
+
+//spread de los dos arrays dentro de otro
+
+const nombresSpread = [...nombres1, ...nombres2];
+
+console.log(nombresSpread);
+
+//spread del array en un objeto
+
+const nombresObj = {
+    ...nombresSpread
+}
+
+console.log(nombresObj);
+
+//spread de objetos
+
+const objetoOriginal = {
+    a: 1,
+    b: 2
+}
+const objetoDos = {
+    a: 1,
+    b: 2
+}
+//copia de objeto spread
+const copiaObjeto = { ...objetoOriginal };
+
+console.log(copiaObjeto);
+
+//concatenar los objetos
+const concatObjeto = { ...objetoOriginal, ...objetoDos };
+
+console.log(concatObjeto);
+
+//modificar objetos
+
+const modificarObjeto = { ...concatObjeto, pepe: "string" }
+
+console.log(modificarObjeto);
+
+//cambiar datos de un objeto
+
+const OriginalPersona = {
+    nombre: "juan",
+    edad: 20,
+    direccion: {
+        ciudad: "mar del plata"
+    }
+};
+const copiaPersona = {
+    ...OriginalPersona,
+    direccion: {
+        ...OriginalPersona.direccion,
+        ciudad: " santa clara"
+    }
+};
+
+console.log(copiaPersona);
+
+//clonar y modificar arrays
+
+const usuarios1 = [
+    {id:1, nombre:"carlos"},
+    {id:2, nombre : "pepe"},
+    {id:3, nombre:"antonella"}
+]
+
+const actualizarUsuario = usuarios1.map(usuarios1 => usuarios1.id === 2 ? {...usuarios1, name:"roberto"}: usuarios1);
+
+console.log(actualizarUsuario);
+
+//REST PARAMETERS
+//nos permite representar un numero indefinido de argumentos con un array
+//utilizamos (...)el nombre del parametro.
+//util cuando no sabemos cuantos argumentos pasar a una funcion
+
+function sumar1(...numeros){
+    let = resultado = 0;
+    for(let numero of numeros){
+        resultado += numero;
+    }
+    return resultado;
+}
+
+console.log(sumar(2,3,1)); // le pasamos mas argumentos a la funcion sin saber cuantos argumentos vamos a apsar
+
+//se puede pasar un objeto a un array ejm
+
+let objeto1 = { a: 1, b: 2 }
+
+let miArray = Object.keys(objeto1).map(function (clave) {
+    return objeto1[clave];
+})
+
+console.log(miArray);
+
+//otra forma mas rapida de pasar un objeto a array
+
+let miArray1 = Object.values(objeto1);
+
+console.log(miArray1);
+
+//trim VER que hace 
+
+
+
 

@@ -58,6 +58,23 @@ function calcularYmostrarElResultrado(amount, interestRate, deadlinesMonth, user
 
     const ResultElement = document.getElementById("result");
     ResultElement.innerHTML = `Hola ${userName}, el pago mensual sera de:  $${MonthlyPayment.toFixed(2)}`;
+
+    //Mostrar las entradas del usuario
+
+    const EntradasUsuario = document.getElementById(`UsuarioEntrada`);
+    EntradasUsuario.innerHTML = ``;
+
+    registros.forEach(entry => {
+        const entryElement = document.createElement(`div`);
+        entryElement.classList.add(`entry`);
+        entryElement.innerHTML = `
+    <p>Nombre: ${entry.Nombre}</p>
+    <p>Monto: ${entry.Monto}</p>
+    <p>Tasa de Interés: ${entry.TasaInteres}</p>
+    <p>Plazo en Meses: ${entry.PlazoMeses}</p>
+    `;
+        EntradasUsuario.appendChild(entryElement);
+    });
 }
 
 function mostrarError(message) {
