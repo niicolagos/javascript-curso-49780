@@ -77,6 +77,12 @@ function mostrarError(message) {
 }
 
 function limpiarDatosIngresados(){
+    
+    document.getElementById('userName').value = '';
+    document.getElementById('loanAmount').value = '';
+    document.getElementById('interest').value = '';
+    document.getElementById('deadlines').value = '';
+    
     const datosFiltrados = registros.filter((registro) => registro.esIngresadoPorUsuario !== true);
     registros.length = 0;
     registros.push(...datosFiltrados);
