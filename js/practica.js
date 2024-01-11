@@ -1272,6 +1272,33 @@ let miArray1 = Object.values(objeto1);
 
 console.log(miArray1);
 
+
+/* if (registros.length > 0 ){
+    const table = document.createElement("table");
+    table.innerHTML= `
+    <tr>
+        <th>Nombre</th>
+        <th>Monto</th>
+        <th>Tasa de Interes</th>
+        <th>Plazo en Meses</th>
+    </tr>
+    `;
+
+registros.forEach(entry =>{
+    const row = document.createElement("tr");
+    row.innerHTML= `
+    <td>${entry.Nombre}</td>
+    <td>${entry.Monto}</td>
+    <td>${entry.TasaInteres}</td>
+    <td>${entry.PlazoMeses}</td>
+    `;
+    table.appendChild(row);
+});
+
+EntradasUsuario.appendChild(table);
+} */ 
+
+
 //trim VER que hace 
 
 

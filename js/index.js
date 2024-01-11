@@ -45,10 +45,11 @@ function calcularPrestamo() {
 
     calcularYmostrarElResultrado(amount, interestRate, deadlinesMonth, userName);// Llama a la función para calcular el préstamo
 
-    // Crearr un nuevo elemento para mostrar un mensaje adicional
-    const adicionalMessage = document.createElement(`p`);
-    adicionalMessage.textContent = `Cálculo realizado con éxito!!`;
-    document.body.appendChild(adicionalMessage);
+    Swal.fire({
+        icon: "success",
+        title: "Exito",
+        text: "Calculo realizado con exito!!",
+    });
 }
 //Función Calculadora de prestamos
 function calcularYmostrarElResultrado(amount, interestRate, deadlinesMonth, userName) {
@@ -62,29 +63,34 @@ function calcularYmostrarElResultrado(amount, interestRate, deadlinesMonth, user
     //Mostrar las entradas del usuario
 
     const EntradasUsuario = document.getElementById(`UsuarioEntrada`);
-    EntradasUsuario.innerHTML = ``;
+    EntradasUsuario.innerHTML = ``; //limpio el contenido previo
 
-    registros.forEach(entry => {
-        const entryElement = document.createElement(`div`);
-        entryElement.classList.add(`entry`);
-        entryElement.innerHTML = `
-    <p>Nombre: ${entry.Nombre}</p>
-    <p>Monto: ${entry.Monto}</p>
-    <p>Tasa de Interés: ${entry.TasaInteres}</p>
-    <p>Plazo en Meses: ${entry.PlazoMeses}</p>
-    `;
-        EntradasUsuario.appendChild(entryElement);
-    });
+
 }
 
 function mostrarError(message) {
-    const errorElement = document.getElementById('error');
-    errorElement.style.display = 'block';
-    errorElement.innerHTML = message;
+    Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: message,
+    });
+}
 
-    setTimeout(() => {
-        errorElement.style.display = 'none';
-    }, 3000);
+function limpiarDatosIngresados(){
+    const datosFiltrados = registros.filter((registro) => registro.esIngresadoPorUsuario !== true);
+    registros.length = 0;
+    registros.push(...datosFiltrados);
+    guardarDatosEnLocalStorage(`registros`, registros);
+
+    //limpiar resultados y entradas en la pantalla
+    document.getElementById(`result`).innerHTML=``;
+    document.getElementById(`EntradasUsuario`).innerHTML= ``;
+
+    Swal.fire({
+        icon: "success",
+        title: "Exito",
+        text: "Datos ingresados por el usuario han sido borrados correctamente",
+    });
 }
 
 //verifica si existen datos previamente guardados en localStorage bajo la clave 'registros' y, en caso afirmativo, los añade al array registros.
@@ -97,6 +103,6 @@ document.addEventListener(`DOMContentLoaded`, function () {
 
 
 document.getElementById(`calculateButton`).addEventListener(`click`, calcularPrestamo);
-
+document.getElementById(`clearButton`).addEventListener(`click`, limpiarDatosIngresados);
 
 
